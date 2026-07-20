@@ -4,6 +4,7 @@
    ========================================================================== */
 window.PAGE_CONFIG = {
   PRODUCT_NAME: 'Gita for Harmony — Illustrated Bhagavad Gita',
+  DOWNLOAD_FILE: '../assets/downloads/gita-for-harmony.pdf',
   BRAND_NAME: 'Krishna Vani',
   AMOUNT_INR: 299,
   PAY_BUTTON_LABEL: 'Pay ₹299 & Get Instant Access →',
