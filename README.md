@@ -10,33 +10,33 @@ real cover art extracted from each source PDF.
 ### Complete illustrated editions (₹299, full 18-chapter translation)
 | Page | Folder | Product |
 |---|---|---|
-| 1 | `landing-page-1/` | Gita for Harmony |
-| 4 | `landing-page-4/` | The Divine Song of God |
+| 1 | `Gita_for_Harmony/` | Gita for Harmony |
+| 4 | `The_Divine_Song_of_God/` | The Divine Song of God |
 
 ### Focused companions (₹199, 12 core chapters, full translation)
 | Page | Folder | Product |
 |---|---|---|
-| 2 | `landing-page-2/` | Gita for Career Success |
-| 3 | `landing-page-3/` | Gita for Harmony & Balance |
+| 2 | `Gita_for_Career_Success/` | Gita for Career Success |
+| 3 | `Gita_for_Harmony_and_Balance/` | Gita for Harmony & Balance |
 
 ### The Practical Guide Series (₹199, 12 chapters, **original commentary — not a translation**)
 | Page | Folder | Product |
 |---|---|---|
-| 5 | `landing-page-5/` | Gita for Productivity |
-| 6 | `landing-page-6/` | Gita for Energy & Health |
-| 7 | `landing-page-7/` | Gita for Building Discipline |
-| 8 | `landing-page-8/` | Gita for Earned Confidence |
-| 9 | `landing-page-9/` | Gita for Finding Your Purpose |
-| 10 | `landing-page-10/` | Gita for Money & Abundance |
-| 11 | `landing-page-11/` | Gita for Deeper Relationships |
-| 12 | `landing-page-12/` | Gita for Calm, Steady Leadership |
-| 13 | `landing-page-13/` | Gita for Grounded Parenting |
-| 14 | `landing-page-14/` | Gita for Steadiness Over Anxiety |
+| 5 | `Gita_for_Productivity/` | Gita for Productivity |
+| 6 | `Gita_for_Energy_and_Health/` | Gita for Energy & Health |
+| 7 | `Gita_for_Building_Discipline/` | Gita for Building Discipline |
+| 8 | `Gita_for_Earned_Confidence/` | Gita for Earned Confidence |
+| 9 | `Gita_for_Finding_Your_Purpose/` | Gita for Finding Your Purpose |
+| 10 | `Gita_for_Money_and_Abundance/` | Gita for Money & Abundance |
+| 11 | `Gita_for_Deeper_Relationships/` | Gita for Deeper Relationships |
+| 12 | `Gita_for_Calm_Steady_Leadership/` | Gita for Calm, Steady Leadership |
+| 13 | `Gita_for_Grounded_Parenting/` | Gita for Grounded Parenting |
+| 14 | `Gita_for_Steadiness_Over_Anxiety/` | Gita for Steadiness Over Anxiety |
 
 ### Other sacred texts (₹99)
 | Page | Folder | Product |
 |---|---|---|
-| 15 | `landing-page-15/` | Hanuman Chalisa |
+| 15 | `Hanuman_Chalisa/` | Hanuman Chalisa |
 
 **Important distinction, verified against each source PDF:** pages 1–4
 present the actual Bhagavad Gita text (Sanskrit shloka, Hindi translation,
@@ -74,7 +74,7 @@ ebook/
 │                                   has <slug>.jpg (hero, full cover) and
 │                                   <slug>-square.jpg (hub card, letterboxed
 │                                   to a square so no title text is cropped).
-├── landing-page-1/ … landing-page-15/
+├── Gita_for_Harmony/ … Hanuman_Chalisa/
 │   ├── index.html                 Page content (see catalog above)
 │   └── config.js                   Page-specific CONFIG (price, product
 │                                     name, Razorpay link) — AMOUNT_INR is
@@ -114,14 +114,14 @@ python -m http.server 5500
 ```
 
 Then visit `http://localhost:5500` for the hub, or
-`http://localhost:5500/landing-page-1/` etc. directly.
+`http://localhost:5500/Gita_for_Harmony/` etc. directly.
 
 ## 2. Deploying
 
 Any static host works — no server required for the base sites:
 
 - **Netlify / Vercel:** drag-and-drop the `ebook/` folder (excluding `server/`), or connect a Git repo.
-- **GitHub Pages:** push this folder to a repo and enable Pages — each landing page is reachable at `yoursite.com/landing-page-1/` etc. automatically.
+- **GitHub Pages:** push this folder to a repo and enable Pages — each landing page is reachable at `yoursite.com/Gita_for_Harmony/` etc. automatically.
 - **Shared hosting / cPanel:** upload everything except `server/` to `public_html`.
 
 Before going live, for **each** landing page and the hub, update:
@@ -136,15 +136,16 @@ All fifteen `config.js` files use the same two options:
 
 ### Option A — Razorpay Payment Link (simplest, no backend needed)
 
-1. In the Razorpay Dashboard (account: `synapsedigitalsolutions.dm@gmail.com`) → **Payment Links** → create one link per price point: **₹99** (page 15), **₹199** (pages 2, 3, 5–14), and **₹299** (pages 1, 4). A separate link per page is recommended so Razorpay reporting shows revenue per product, even where the price is shared.
-2. Open **each** `landing-page-N/config.js`, find:
-   ```js
-   RAZORPAY_PAYMENT_LINK: 'https://rzp.io/l/PLACEHOLDER-PAYMENT-LINK',
-   ```
-3. Replace the placeholder with your real link.
+**Current status: already configured.** Three real Razorpay Payment Links are live in every page's `config.js`, one per price tier:
+- ₹99 → `https://rzp.io/rzp/Y1lRCCLK` (Hanuman Chalisa)
+- ₹199 → `https://rzp.io/rzp/oaM6d5C` (12 of the 15 products)
+- ₹299 → `https://rzp.io/rzp/EFRvvdn` (Gita for Harmony, The Divine Song of God)
 
-Until you do this, every "Pay & Get Instant Access" button shows a friendly
-"payment being finalized" message instead of erroring out.
+To change a link later, open that product's `config.js` (e.g. `Gita_for_Harmony/config.js`) and edit:
+```js
+RAZORPAY_PAYMENT_LINK: 'https://rzp.io/rzp/EFRvvdn',
+```
+**Important:** set each link's **Redirect URL** in the Razorpay Dashboard (per-link settings) to point back to your live domain's `assets/success.html`, so customers land on your success page after paying instead of Razorpay's default confirmation screen.
 
 ### Option B — Inline Checkout (advanced, needs a backend)
 
@@ -160,7 +161,7 @@ the order amount and product name are passed dynamically from each page's
    cp ../.env.example ../.env   # fill in real RAZORPAY_KEY_ID / SECRET / WEBHOOK_SECRET
    npm start
    ```
-3. In **each** `landing-page-N/config.js`, set:
+3. In **each** product's `config.js` (e.g. `Gita_for_Harmony/config.js`), set:
    ```js
    USE_INLINE_CHECKOUT: true,
    RAZORPAY_KEY_ID: 'rzp_live_xxxxxxxxxxxx',   // public key — safe to expose in frontend
@@ -215,6 +216,6 @@ message-to-landing-page relevance.
 
 ## 8. Customizing a page or adding another
 
-- To edit one page's price/copy: change `landing-page-N/index.html` and `landing-page-N/config.js` — no impact on other pages.
+- To edit one page's price/copy: change that product's `index.html` and `config.js` (e.g. `Gita_for_Harmony/index.html`) — no impact on other pages.
 - To change the shared look everywhere: edit `assets/styles.css`.
-- To add a 16th landing page: copy an existing `landing-page-N/` folder that matches the new product's content type (translation-style like `landing-page-2`, or commentary-style like `landing-page-5`), update its `config.js` and content, extract/add its cover art to `assets/covers/`, then add it to `index.html`'s hub grid and to `sitemap.xml`/`robots.txt`.
+- To add a 16th landing page: copy an existing product folder that matches the new product's content type (translation-style like `Gita_for_Career_Success/`, or commentary-style like `Gita_for_Productivity/`) and rename the copy to match the new product's title with underscores between words, update its `config.js` and content, extract/add its cover art to `assets/covers/`, then add it to `index.html`'s hub grid and to `sitemap.xml`/`robots.txt`.
