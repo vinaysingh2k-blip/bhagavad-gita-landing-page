@@ -134,18 +134,22 @@ Before going live, for **each** landing page and the hub, update:
 Each landing page loads its own `config.js` before the shared `assets/main.js`.
 All fifteen `config.js` files use the same two options:
 
-### Option A — Razorpay Payment Link (simplest, no backend needed)
+### Option A — Razorpay Payment Page (simplest, no backend needed)
 
-**Current status: already configured.** Three real Razorpay Payment Links are live in every page's `config.js`, one per price tier:
-- ₹99 → `https://rzp.io/rzp/Y1lRCCLK` (Hanuman Chalisa)
-- ₹199 → `https://rzp.io/rzp/oaM6d5C` (12 of the 15 products)
-- ₹299 → `https://rzp.io/rzp/EFRvvdn` (Gita for Harmony, The Divine Song of God)
+**Current status: already configured** with Razorpay **Payment Pages** — one per price tier, shared across every product at that price:
+- ₹99 → `https://rzp.io/rzp/fXwQIFj` (Hanuman Chalisa)
+- ₹199 → `https://rzp.io/rzp/NeIQWge6` (12 of the 15 products)
+- ₹299 → `https://rzp.io/rzp/IHJMa3Q5` (Gita for Harmony, The Divine Song of God)
+
+**Why Payment Pages, not Payment Links:** we started with Razorpay **Payment Links**, which turned out to be single-use — a Payment Link permanently locks to `paid` status after its *first* successful payment and cannot be reset or reused for any other customer (confirmed directly from Razorpay's own docs). Since multiple products share one link per price tier, that broke the second customer at each tier. **Payment Pages** are Razorpay's product built for exactly this — one URL, unlimited different customers, fixed price. If you ever need to regenerate a link, create it as a **Payment Page** (Dashboard → Payment Pages → fixed price, not "customer decides amount"), not a Payment Link.
 
 To change a link later, open that product's `config.js` (e.g. `Gita_for_Harmony/config.js`) and edit:
 ```js
-RAZORPAY_PAYMENT_LINK: 'https://rzp.io/rzp/EFRvvdn',
+RAZORPAY_PAYMENT_LINK: 'https://rzp.io/rzp/IHJMa3Q5',
 ```
-**Important:** set each link's **Redirect URL** in the Razorpay Dashboard (per-link settings) to point back to your live domain's `assets/success.html`, so customers land on your success page after paying instead of Razorpay's default confirmation screen.
+**Important:** set each Payment Page's **Redirect URL** in the Razorpay Dashboard to point back to your live domain's `assets/success.html`, so customers land on your success page (with the working download button) after paying instead of Razorpay's default confirmation screen.
+
+**Known limitation with shared links:** because up to 12 products share the same ₹199 Payment Page (and 2 share the ₹299 page), Razorpay itself has no way to tell you *which specific product* a given payment was for — that's only known client-side, via the browser session, at the moment the customer clicked "Pay" on a specific product page. If a customer completes payment without that browser session surviving (new device, cleared cookies, or the Redirect URL wasn't set), you can't tell from the Razorpay dashboard alone which of the tied products they meant to buy. For real per-product tracking, create a separate Payment Page per product (15 total) instead of 3 shared ones, and update each `config.js` to its own link.
 
 ### Option B — Inline Checkout (advanced, needs a backend)
 
