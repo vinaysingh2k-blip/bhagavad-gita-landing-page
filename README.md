@@ -179,7 +179,34 @@ the order amount and product name are passed dynamically from each page's
 - [ ] Confirm webhook signature verification works (check server logs).
 - [ ] Set up an email/WhatsApp automation triggered by the webhook to deliver the digital file.
 
-## 4. Forms
+## 4. Ebook delivery (current implementation — client-side, no backend)
+
+Each product's real PDF lives in `assets/downloads/<slug>.pdf` (added to the
+repo directly — see the security note below). Right before a customer is
+sent to the Razorpay Payment Link, `assets/main.js` stores that page's
+`DOWNLOAD_FILE` (set in each product's `config.js`) and `PRODUCT_NAME` in
+`sessionStorage`. When Razorpay redirects back to `assets/success.html`
+after payment, that page reads `sessionStorage` and shows a working
+**"Download Your Copy Now →"** button pointing straight at the PDF.
+
+**This works today with zero extra setup**, but has two real limitations
+you should know about:
+- **No server-side payment verification.** The success page trusts the
+  client-side redirect — a determined user could reach `assets/success.html`
+  directly without paying. Acceptable for a low-price/early-stage product;
+  not something to rely on at scale.
+- **Files are plain public static assets.** Anyone with the direct URL
+  (`/assets/downloads/gita-for-harmony.pdf`, etc.) can download it — there's
+  no payment check on the file itself, and the GitHub repo is public, so the
+  files are discoverable by browsing it. This was a deliberate simplicity
+  tradeoff (see project chat history) — upgrade to real Razorpay webhook
+  verification + a private/signed-URL storage service (Vercel Blob, S3,
+  Cloudinary) if you need real protection against unpaid downloads. Emailing
+  the link (instead of/alongside the on-page button) via a service like
+  Resend, triggered from a Razorpay webhook, is the natural next upgrade —
+  see `server/server-stub.js` for the webhook-handling starting point.
+
+## 5. Forms
 
 Each landing page's enquiry/checkout form (`#checkout-form`) validates:
 Name, Email, Mobile (10-digit Indian format), City, State, optional Message
@@ -188,14 +215,14 @@ and a success state. It also fires a non-blocking `POST` to each page's
 `ENQUIRY_ENDPOINT` (`/api/enquiry`, stubbed in `server-stub.js`) so you
 capture leads even before Razorpay is fully wired up.
 
-## 5. SEO
+## 6. SEO
 
 - Each landing page has its own title, meta description, Open Graph tags, and JSON-LD (`Product`, `FAQPage`, `BreadcrumbList`) tailored to its angle and keywords.
 - Update `priceValidUntil`, `aggregateRating`, and `sku` in each page's Product schema to real, accurate values before launch.
 - **Replace the sample testimonials** (clearly marked with an HTML comment in each page) with real, verifiable customer reviews before publishing.
 - The hub `index.html` carries a `CollectionPage` schema linking to all 15 landing pages.
 
-## 6. Google Ads
+## 7. Google Ads
 
 Page-specific copy — headlines, descriptions, sitelinks, callouts, structured
 snippets, keyword lists (with match types), and negative keywords — is in
@@ -206,7 +233,7 @@ on them. Run each landing page as its own campaign/ad group; don't mix
 headlines across pages, since Quality Score depends on tight
 message-to-landing-page relevance.
 
-## 7. Performance & accessibility notes
+## 8. Performance & accessibility notes
 
 - Cover images (`assets/covers/*.jpg`) are real cover art extracted from each source PDF's own first page, resized to 900px wide and compressed to ~100-250KB (full) / ~100-160KB (square) each — small enough to keep every page fast. Each landing page's hero cover loads eagerly (it's the likely LCP element, above the fold); the hub page lazy-loads all but its first card since only that one is guaranteed above the fold on most screens.
 - All `<img>` tags carry explicit `width`/`height` matching the actual file dimensions, to prevent layout shift (a Core Web Vitals / CLS factor). If you replace any cover image with a different aspect ratio, update the matching `width`/`height` attributes in that page's hero **and** in the hub card.
@@ -214,7 +241,7 @@ message-to-landing-page relevance.
 - Fonts load via `<link>` with `preconnect` for faster first paint.
 - All interactive elements (`<details>` FAQ, form fields, buttons) are keyboard-accessible by default.
 
-## 8. Customizing a page or adding another
+## 9. Customizing a page or adding another
 
 - To edit one page's price/copy: change that product's `index.html` and `config.js` (e.g. `Gita_for_Harmony/index.html`) — no impact on other pages.
 - To change the shared look everywhere: edit `assets/styles.css`.
