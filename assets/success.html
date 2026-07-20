@@ -20,24 +20,36 @@
     <div class="container narrow center">
       <span style="font-size:56px; display:block; margin-bottom:16px;">✅</span>
       <h1>Payment Successful — Thank You!</h1>
-      <p class="lead" id="success-product-line">Your order has been received. A confirmation email with your download link is on its way to your inbox and WhatsApp within the next few minutes.</p>
+      <p class="lead" id="success-product-line">Your order has been received. Click below to download your copy right now.</p>
 
-      <div class="pricing-card" style="text-align:left; max-width:520px; margin-left:auto; margin-right:auto;">
-        <h3 style="margin-bottom:12px;">What happens next?</h3>
+      <p style="margin-top:26px;">
+        <a href="#" id="download-btn" class="btn btn-primary btn-large" hidden>Download Your Copy Now →</a>
+        <span id="download-unavailable" style="display:block; max-width:480px; margin:0 auto; color:var(--color-ink-soft); font-size:14.5px;">
+          We couldn't find your download link in this browser session — this can happen if you opened this page in a new tab/device, or your session expired. Email us your payment confirmation and we'll send your copy right away.
+        </span>
+      </p>
+
+      <div class="pricing-card" style="text-align:left; max-width:520px; margin-left:auto; margin-right:auto; margin-top:30px;">
+        <h3 style="margin-bottom:12px;">A few things to know</h3>
         <ul style="list-style:disc; padding-left:20px;">
-          <li style="margin-bottom:8px;">Check your email (including spam/promotions folder) for your digital copy.</li>
-          <li style="margin-bottom:8px;">Save our WhatsApp number for instant support.</li>
-          <li style="margin-bottom:8px;">Didn't receive it within 15 minutes? Contact <a href="mailto:synapsedigitalsolutions.dm@gmail.com" style="color:var(--color-saffron-dark); font-weight:700;">synapsedigitalsolutions.dm@gmail.com</a>.</li>
+          <li style="margin-bottom:8px;">This download link is only shown once, on this page — save the file somewhere safe (e.g. cloud storage or email it to yourself) right after downloading.</li>
+          <li style="margin-bottom:8px;">Having trouble downloading, or lost the file later? Email us your payment confirmation and we'll resend it.</li>
+          <li style="margin-bottom:8px;">Contact us anytime at <a href="mailto:synapsedigitalsolutions.dm@gmail.com" style="color:var(--color-saffron-dark); font-weight:700;">synapsedigitalsolutions.dm@gmail.com</a>.</li>
         </ul>
       </div>
 
-      <p style="margin-top:30px;"><a href="../index.html" class="btn btn-primary">Return to Home</a></p>
+      <p style="margin-top:30px;"><a href="../index.html" class="btn btn-ghost">Return to Home</a></p>
 
       <!--
         DEVELOPER NOTE:
-        On a real Razorpay integration, verify the payment signature
-        server-side (see /server/server-stub.js) BEFORE showing this
-        success state — never trust the client-side redirect alone.
+        This page delivers the file via a client-side sessionStorage value
+        set right before the customer was redirected to Razorpay — it is
+        NOT verified server-side, so a determined user could reach this
+        page without paying (e.g. by navigating here directly). For a
+        production business handling meaningful volume, replace this with
+        a real Razorpay webhook (see /server/server-stub.js) that verifies
+        the payment server-side before granting access, ideally paired
+        with emailing the link so it isn't tied to one browser session.
       -->
     </div>
   </section>
@@ -45,16 +57,40 @@
 
 <footer class="site-footer">
   <div class="container">
-    <p class="footer-copyright">© 2026 Krishna Vani. All rights reserved.</p>
+    <p class="footer-brand"><span class="fb-1">Krishna</span><span class="fb-2">Vani</span></p>
+    <p class="footer-tagline">Ancient Wisdom for the Modern Professional</p>
+    <nav class="footer-nav" aria-label="Footer">
+      <a href="../contact.html">Contact</a>
+      <span class="footer-sep">|</span>
+      <a href="../privacy-policy.html">Privacy</a>
+      <span class="footer-sep">|</span>
+      <a href="../terms-and-conditions.html">Terms</a>
+      <span class="footer-sep">|</span>
+      <a href="../about.html">About</a>
+    </nav>
+    <div class="footer-divider"></div>
+    <p class="footer-copyright">© 2026 Growthyfai Technologies Private Limited. All rights reserved.</p>
+    <p class="footer-copyright">KrishnaVani is a brand operated by Growthyfai Technologies Private Limited.</p>
   </div>
 </footer>
 
 <script>
   try {
     var productName = sessionStorage.getItem('lastProductName');
+    var downloadFile = sessionStorage.getItem('lastDownloadFile');
+
     if (productName) {
       document.getElementById('success-product-line').textContent =
-        'Your order for "' + productName + '" has been received. A confirmation email with your download link is on its way to your inbox and WhatsApp within the next few minutes.';
+        'Your order for "' + productName + '" has been received. Click below to download your copy right now.';
+    }
+
+    var downloadBtn = document.getElementById('download-btn');
+    var unavailableMsg = document.getElementById('download-unavailable');
+    if (downloadFile) {
+      downloadBtn.href = downloadFile;
+      downloadBtn.setAttribute('download', '');
+      downloadBtn.hidden = false;
+      unavailableMsg.style.display = 'none';
     }
   } catch (e) { /* no-op */ }
 </script>
