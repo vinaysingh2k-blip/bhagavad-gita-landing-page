@@ -1,11 +1,151 @@
 # Google Ads Assets — Krishna Vani
 
 > **Coverage note:** the site now has 15 landing pages total (see the
-> catalog table in `README.md`), but this file currently has complete
-> campaign copy for **only pages 1-4** (the original catalog). Pages 5-15
+> catalog table in `README.md`), but the per-page campaigns below have
+> complete copy for **only pages 1-4** (the original catalog). Pages 5-15
 > (the Practical Guide Series + Hanuman Chalisa) still need equivalent
-> headline/description/keyword sections written in the same format below
-> before running ads on them.
+> headline/description/keyword sections written in the same format before
+> running ads on them. **The Home Page Master Campaign below is separate
+> from these and is ready to run today.**
+
+---
+
+# 🏠 Home Page Master Campaign (Recommended starting campaign)
+
+**Goal:** capture broad "Bhagavad Gita" and "Hanuman Chalisa" search intent
+and send it to the home page, where visitors can browse and pick from all
+15 editions — rather than betting the whole budget on one product page.
+
+## Campaign settings
+
+| Setting | Value |
+|---|---|
+| Campaign name | Krishna Vani — Bhagavad Gita & Hanuman Chalisa (Home) |
+| Campaign type | Search Network only (turn off Display/Search Partners to protect a small budget) |
+| Daily budget | **₹80/day** (~₹2,400/month) |
+| Bidding | **Maximize Clicks** to start (no conversion history yet); switch to **Maximize Conversions** once you have 15-20 recorded conversions in Google Ads |
+| Locations | **India** (all states/UTs — Pan India) |
+| Languages | English + Hindi |
+| Final URL (all ads) | `https://krishnavani-bhagwad-gita.vercel.app/` |
+| Ad rotation | Optimize: prefer best performing ads |
+
+**Budget reality check:** ₹80/day is tight — realistically **8-25 clicks/day**
+depending on actual CPC in this niche. At this budget, use **Phrase Match**
+and **Exact Match only** (skip Broad Match entirely), and keep the keyword
+list short and specific rather than broad. Broad single-word terms like
+"bhagavad gita" alone will burn the whole daily budget on 2-3 clicks from
+extremely high-competition, often irrelevant traffic (people searching for
+temples, movies, general info — not to buy an ebook). The long-tail,
+purchase-intent phrases below are deliberately favored for this reason.
+
+Structure this as **one campaign with two ad groups** below — same budget
+pool, same final URL, but each ad group's headlines/keywords stay tightly
+themed to its own search intent (this is what actually protects Quality
+Score and keeps CPC down, more than the budget setting itself).
+
+---
+
+## Ad Group 1: "Bhagavad Gita Ebook"
+
+### Headlines (15, ≤30 characters)
+| # | Headline | Chars |
+|---|---|---|
+| 1 | Bhagavad Gita PDF Book | 23 |
+| 2 | Illustrated Gita Online | 24 |
+| 3 | Gita eBook – From ₹199 | 22 |
+| 4 | Sanskrit, Hindi & English | 26 |
+| 5 | Shrimad Bhagavad Gita | 22 |
+| 6 | Complete Gita, 18 Chapters | 27 |
+| 7 | Gita for Modern Life | 21 |
+| 8 | Instant Digital Delivery | 25 |
+| 9 | Read the Gita Today | 20 |
+| 10 | Timeless Wisdom, ₹199 | 21 |
+| 11 | Illustrated Every Chapter | 26 |
+| 12 | Gita Book for Beginners | 24 |
+| 13 | Shop Gita Editions Online | 26 |
+| 14 | Ancient Wisdom, Modern Life | 28 |
+| 15 | 7-Day Money-Back Guarantee | 27 |
+
+### Descriptions (4, ≤90 characters)
+1. Illustrated Bhagavad Gita eBooks — Sanskrit, Hindi & English. Instant download. (81)
+2. Multiple editions: complete text or focused life-guides. From ₹199 only. (75)
+3. Secure checkout. 7-day money-back guarantee. Read your copy tonight. (70)
+4. 1,000+ readers across India. Choose the edition built for your life. (71)
+
+### Keywords
+- **Primary:** bhagavad gita pdf, bhagavad gita ebook, bhagavad gita book online
+- **Secondary:** shrimad bhagavad gita pdf, illustrated bhagavad gita, gita book in english, gita book in hindi
+- **Long-tail:** bhagavad gita book with hindi and english translation, buy bhagavad gita ebook online india, complete bhagavad gita pdf with meaning
+- **Phrase Match:** "bhagavad gita pdf", "bhagavad gita ebook", "buy bhagavad gita online"
+- **Exact Match:** [bhagavad gita pdf], [bhagavad gita ebook], [bhagavad gita book online]
+
+---
+
+## Ad Group 2: "Hanuman Chalisa Ebook"
+
+### Headlines (15, ≤30 characters)
+| # | Headline | Chars |
+|---|---|---|
+| 1 | Hanuman Chalisa PDF | 20 |
+| 2 | Chalisa with Meaning | 21 |
+| 3 | Hanuman Chalisa – ₹99 | 22 |
+| 4 | Sanskrit, Hindi & English | 26 |
+| 5 | Complete 40 Chaupais | 21 |
+| 6 | Traditional Text, Translated | 29 |
+| 7 | Hanuman Chalisa eBook | 22 |
+| 8 | Instant Digital Delivery | 25 |
+| 9 | Recite With Understanding | 26 |
+| 10 | Chalisa for Daily Path | 23 |
+| 11 | With Roman Transliteration | 27 |
+| 12 | Hanuman Chalisa Explained | 26 |
+| 13 | Shop Now – Just ₹99 | 20 |
+| 14 | Ancient Hymn, Modern Guide | 27 |
+| 15 | 7-Day Money-Back Guarantee | 27 |
+
+### Descriptions (4, ≤90 characters)
+1. Complete Hanuman Chalisa — Sanskrit/Awadhi, Hindi meaning, English. Just ₹99. (79)
+2. All 40 chaupais plus opening & closing dohas, organized into 8 sections. (75)
+3. Secure checkout. 7-day money-back guarantee. Instant digital delivery. (73)
+4. Recite with real understanding — finally know what every line means. (71)
+
+### Keywords
+- **Primary:** hanuman chalisa pdf, hanuman chalisa ebook, hanuman chalisa with meaning
+- **Secondary:** hanuman chalisa in hindi pdf, hanuman chalisa english translation, hanuman chalisa lyrics pdf
+- **Long-tail:** hanuman chalisa pdf with hindi and english meaning, complete hanuman chalisa book online india, hanuman chalisa with transliteration pdf
+- **Phrase Match:** "hanuman chalisa pdf", "hanuman chalisa with meaning", "hanuman chalisa ebook"
+- **Exact Match:** [hanuman chalisa pdf], [hanuman chalisa with meaning], [hanuman chalisa ebook]
+
+---
+
+## Shared assets (both ad groups)
+
+### Sitelinks (4)
+1. **Bhagavad Gita Editions** — Complete & focused editions / Sanskrit, Hindi & English → `/`
+2. **Hanuman Chalisa** — Complete traditional text / With Hindi & English meaning → `/Hanuman_Chalisa/`
+3. **Why Krishna Vani** — The Four Pillars of our editions / Career, purpose, peace & growth → `/#why`
+4. **About Us** — Who we are, what we publish → `/about.html`
+
+### Callouts (10)
+Instant Digital Delivery · 7-Day Money-Back Guarantee · Secure Razorpay Checkout · Sanskrit, Hindi & English · 15 Editions to Choose From · Trusted Pan-India · From ₹99 · No Subscription, One-Time Price · Illustrated Editions Available · Read on Any Device
+
+### Structured Snippets
+- **Types:** Illustrated Edition, Digital Edition, Complete Text, Practical Guide
+- **Brands:** Krishna Vani
+
+### Display Paths
+`/gita-hanuman-chalisa` / `/pdf-ebooks`
+
+### Negative Keywords (apply at campaign level)
+free, torrent, pdf download free, audiobook free, movie, serial, tv show, temple, aarti timing, job, course, used books, rent, library, wallpaper, image, photo, ringtone, app download, whatsapp status, quotes only, summary only
+
+## Setup notes specific to this campaign
+- Since the final URL is the home page (not a single product), **Enhanced Conversions / conversion tracking should fire from each product page's checkout success**, not the home page itself — make sure your Google Ads conversion tag (or GA4 goal) is placed on `assets/success.html`, not `index.html`.
+- Review Search Terms report **daily for the first 2 weeks** given the small budget — add anything irrelevant straight to negative keywords so ₹80/day isn't wasted on mismatched clicks.
+- Once you see which of the two ad groups converts better, consider shifting more of the ₹80 budget toward it via ad group-level bid adjustments, or splitting into two separate ₹40/day campaigns for cleaner budget control.
+
+---
+
+# Per-Product Landing Page Campaigns
 
 Four distinct products, each with its own landing page. Run each as its own
 Google Ads campaign or ad group so headlines/keywords stay tightly relevant
