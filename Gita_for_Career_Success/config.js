@@ -4,6 +4,7 @@
    ========================================================================== */
 window.PAGE_CONFIG = {
   PRODUCT_NAME: 'Gita for Career Success — 12-Chapter Illustrated Companion',
+  DOWNLOAD_FILE: '../assets/downloads/gita-for-career-success.pdf',
   BRAND_NAME: 'Krishna Vani',
   AMOUNT_INR: 199,
   PAY_BUTTON_LABEL: 'Pay ₹199 & Get Instant Access →',
